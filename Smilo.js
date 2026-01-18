@@ -1,5 +1,4 @@
 // Inspired by Apple Watch Activity Rings
-
 const WIDGET_CONFIG = {
   colors: {
     green: { light: "#00D787", dark: "#00A65F" },
@@ -750,7 +749,7 @@ Your joy is contagious! 😊`;
               Math.floor(Math.random() * NOTIFICATION_MESSAGES.length)
             ];
           notification.sound = "default";
-          notification.openURL = "scriptable:///run/Smilo?action=widget";
+          notification.openURL = "scriptable:///run/Smilo?action";
           notification.setTriggerDate(notificationDate);
           await notification.schedule();
         }
@@ -781,9 +780,9 @@ if (config.runsInWidget) {
     ? args.queryParameters["action"]
     : null;
 
-  if (urlAction === "widget") {
+  if (urlAction === "settings") {
     // Show settings menu when specifically requested via URL parameter
-    await smileWidget.handleWidgetClick();
+    await smileWidget.showSettingsMenu();
   } else if (
     config.runsInApp &&
     !config.runsWithSiri &&
@@ -792,8 +791,8 @@ if (config.runsInWidget) {
     // Show settings only when running directly in Scriptable app with no parameters
     await smileWidget.showSettingsMenu();
   } else {
+    await smileWidget.handleWidgetClick();
     // Handle widget click (from shortcuts or widget interaction)
-    await smileWidget.showSettingsMenu();
   }
 }
 
