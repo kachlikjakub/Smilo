@@ -743,7 +743,7 @@ Your joy is contagious! 😊`;
           const randomEmoji =
             titleEmojis[Math.floor(Math.random() * titleEmojis.length)];
 
-          notification.title = `Smily ${randomEmoji}`;
+          notification.title = `Smilo ${randomEmoji}`;
           notification.body =
             NOTIFICATION_MESSAGES[
               Math.floor(Math.random() * NOTIFICATION_MESSAGES.length)
